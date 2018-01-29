@@ -11,9 +11,10 @@ using System;
 namespace Cucklist.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180127000749_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,44 +70,6 @@ namespace Cucklist.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("Cucklist.Models.Email", b =>
-                {
-                    b.Property<int>("EmailId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<bool>("ContactOk");
-
-                    b.Property<bool>("IsPrimary");
-
-                    b.HasKey("EmailId");
-
-                    b.ToTable("Email");
-                });
-
-            modelBuilder.Entity("Cucklist.Models.Join", b =>
-                {
-                    b.Property<int>("JoinId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<bool>("Contact");
-
-                    b.Property<int?>("EmailId");
-
-                    b.Property<string>("FamilyName");
-
-                    b.Property<string>("GivenName");
-
-                    b.Property<bool>("Notify");
-
-                    b.Property<string>("Phone");
-
-                    b.HasKey("JoinId");
-
-                    b.HasIndex("EmailId");
-
-                    b.ToTable("Join");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -215,13 +178,6 @@ namespace Cucklist.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("Cucklist.Models.Join", b =>
-                {
-                    b.HasOne("Cucklist.Models.Email", "Email")
-                        .WithMany()
-                        .HasForeignKey("EmailId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

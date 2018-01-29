@@ -11,9 +11,10 @@ using System;
 namespace Cucklist.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180127002020_initialjoin")]
+    partial class initialjoin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,20 +72,6 @@ namespace Cucklist.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Cucklist.Models.Email", b =>
-                {
-                    b.Property<int>("EmailId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<bool>("ContactOk");
-
-                    b.Property<bool>("IsPrimary");
-
-                    b.HasKey("EmailId");
-
-                    b.ToTable("Email");
-                });
-
             modelBuilder.Entity("Cucklist.Models.Join", b =>
                 {
                     b.Property<int>("JoinId")
@@ -92,7 +79,7 @@ namespace Cucklist.Data.Migrations
 
                     b.Property<bool>("Contact");
 
-                    b.Property<int?>("EmailId");
+                    b.Property<string>("Email");
 
                     b.Property<string>("FamilyName");
 
@@ -103,8 +90,6 @@ namespace Cucklist.Data.Migrations
                     b.Property<string>("Phone");
 
                     b.HasKey("JoinId");
-
-                    b.HasIndex("EmailId");
 
                     b.ToTable("Join");
                 });
@@ -215,13 +200,6 @@ namespace Cucklist.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("Cucklist.Models.Join", b =>
-                {
-                    b.HasOne("Cucklist.Models.Email", "Email")
-                        .WithMany()
-                        .HasForeignKey("EmailId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
