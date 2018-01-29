@@ -6,12 +6,22 @@
 <div class="row">
 
     <div Class="col-md-4">
-        @using(Html.BeginForm("Create","Joins",new { method = "Email" },FormMethod.Post))
+
+
+        <p>Would you like to receive notification when we are up and running? Enter your email below!</p>
+
+
+
+        @using(Html.BeginForm("View","Join",FormMethod.Post,"Email"))
+
         {
-            @Html.LabelFor(m => m.Contact,"Would you like to receive notification when we are up and running? Enter your email below!")
-            @Html.TextBoxFor(m => m.Email,new { @class = "form-control",id = "email",placeholder = "name@domain.com" })
-            <input class="btn-default" type="submit" method="post" />
+
+            @Html.TextBoxFor(m => m.Email)
+            <input type="submit" action="Join/View" value="Join" />
         }
+
+
+
 
     </div>
 </div>

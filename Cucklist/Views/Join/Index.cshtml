@@ -1,0 +1,15 @@
+﻿@model Join
+@{
+    ViewData["Title"] = "View";
+}
+
+
+
+@using(Html.BeginForm("View","Join"))
+{
+
+    @Html.LabelFor(m => m.Email)
+    @Html.TextBoxFor(m => m.Email)
+    <input type="submit" value="Join" method="post" />
+
+}

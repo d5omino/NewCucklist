@@ -15,6 +15,21 @@ namespace Cucklist.Models
         public bool Notify { get; set; }
         public Email Email { get; set; }
 
+        public Join(string givenname, string familyname, Email address)
+        {
+            JoinId = this.JoinId;
+            GivenName = givenname;
+            FamilyName = familyname;
+            Email = address;
+
+        }
+
+        public Join()
+        {
+            JoinId = this.JoinId;
+
+        }
+
 
     }
 }
